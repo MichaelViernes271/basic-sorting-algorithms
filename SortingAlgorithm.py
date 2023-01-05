@@ -93,5 +93,7 @@ def print_test():
     array = [11, 4, 3, 6, 1, 19, 10]
     print("Orig: ", array, "\n", "List sorted with merge_sort in ascending order: ", merge_sort(array))
 
-print_test()
+
+if __name__ == "__main__":
+    print_test()
 
