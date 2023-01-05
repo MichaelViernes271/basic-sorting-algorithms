@@ -33,7 +33,6 @@ def bubble_sort(arr):
     arr = arr[::-1] # ascending order
     return arr
 
-
 def insertion_sort(arr):
     for i in range(1, len(arr)):
   
@@ -87,7 +86,6 @@ def merge_sort(nlist):
             k=k+1
         
         passes(counter, nlist)
-        
     return nlist
 
 def passes(i, arr):
@@ -96,19 +94,19 @@ def passes(i, arr):
 def print_test():
     """testing the sorting algo"""
     
-    array = [11, 4, 3, 6, 1, 19, 10]
+    array = ["e", "c", "a", "b", "d"]
     print("Orig: ", array)
     print("List sorted with selection_sort in descending order: ", selection_sort(array))
 
-    array = [5, 3, 4, 1, 2]
+    array = ["e", "c", "a", "b", "d"]
     print("Orig: ", array)
     print("List sorted with bubble sort in ascending order: ", bubble_sort(array))
 
-    array = [5, 3, 4, 8, 7]
+    array = ["e", "c", "a", "b", "d"]
     print("Orig: ", array)
     print("List sorted with insertion sort in ascending order: ", insertion_sort(array))
     
-    array = [6,2,1,3,4,5,11,21]
+    array = ["e", "c", "a", "b", "d"]
     print("Orig: ", array)
     print("List sorted with merge_sort in ascending order: ", merge_sort(array))
 
