@@ -1,4 +1,3 @@
-
 def selection_sort(arr):
     n = len(arr)
     for i in range(n):
@@ -14,6 +13,7 @@ def selection_sort(arr):
         temp = arr[i]
         arr[i] = arr[min]
         arr[min] = temp
+        passes(i+1, arr)
 
     return arr
 
@@ -27,7 +27,9 @@ def bubble_sort(arr):
                 arr[j+1], arr[j] = arr[j], arr[j+1]
                 guard_clause = 1
                 if guard_clause == 0:
+                    print("SORTED ALREADY!")
                     break
+        passes(i+1, arr)
     arr = arr[::-1] # ascending order
     return arr
 
@@ -45,9 +47,12 @@ def insertion_sort(arr):
                 arr[j+1] = arr[j]
                 j -= 1
         arr[j+1] = temp
+        passes(i, arr)
     return arr
 
 
+
+counter = 0
 def merge_sort(nlist):
     if len(nlist) > 1:
         mid = len(nlist) // 2
@@ -56,14 +61,19 @@ def merge_sort(nlist):
 
         merge_sort(lefthalf)
         merge_sort(righthalf)
+        global counter
+        counter += 1
+        
         i = j = k = 0       
         while i < len(lefthalf) and j < len(righthalf):
             if lefthalf[i] < righthalf[j]:
                 nlist[k] = lefthalf[i]
                 i = i+1
+                
             else:
                 nlist[k]=righthalf[j]
                 j = j+1
+
             k = k+1
 
         while i < len(lefthalf):
@@ -75,23 +85,32 @@ def merge_sort(nlist):
             nlist[k]=righthalf[j]
             j=j+1
             k=k+1
+        
+        passes(counter, nlist)
+        
     return nlist
 
+def passes(i, arr):
+    print("PASS {}: {}".format(i, arr))
 
 def print_test():
     """testing the sorting algo"""
     
     array = [11, 4, 3, 6, 1, 19, 10]
-    print("Orig: ", array, "\n", "List sorted with selection_sort in descending order: ", selection_sort(array))
+    print("Orig: ", array)
+    print("List sorted with selection_sort in descending order: ", selection_sort(array))
 
     array = [5, 3, 4, 1, 2]
-    print("Orig: ", array, "\n", "List sorted with bubble sort in ascending order: ", bubble_sort(array))
+    print("Orig: ", array)
+    print("List sorted with bubble sort in ascending order: ", bubble_sort(array))
 
     array = [5, 3, 4, 8, 7]
-    print("Orig: ", array, "\n", "List sorted with insertion sort in ascending order: ", insertion_sort(array))
+    print("Orig: ", array)
+    print("List sorted with insertion sort in ascending order: ", insertion_sort(array))
     
-    array = [11, 4, 3, 6, 1, 19, 10]
-    print("Orig: ", array, "\n", "List sorted with merge_sort in ascending order: ", merge_sort(array))
+    array = [6,2,1,3,4,5,11,21]
+    print("Orig: ", array)
+    print("List sorted with merge_sort in ascending order: ", merge_sort(array))
 
 
 if __name__ == "__main__":
